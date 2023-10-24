@@ -20,7 +20,7 @@ class SevereWeatherDetected extends Notification implements ShouldQueue
      * Create a new notification instance.
      */
     public function __construct(
-        private Collection $triggeredParameters
+        private readonly Collection $triggeredParameters
     ) {
     }
 

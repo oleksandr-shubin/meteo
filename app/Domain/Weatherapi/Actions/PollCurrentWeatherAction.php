@@ -8,7 +8,6 @@ use App\Domain\Shared\Dto\WeatherParameterDto;
 use App\Domain\Shared\Dto\WeatherStateDto;
 use App\Domain\Weatherapi\Support\WeatherapiService;
 use Illuminate\Support\Collection;
-use Illuminate\Support\Str;
 
 class PollCurrentWeatherAction
 {
