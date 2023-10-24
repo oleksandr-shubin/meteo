@@ -2,8 +2,8 @@
 
 namespace Database\Factories;
 
+use App\Domain\Auth\Models\User;
 use App\Models\Team;
-use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
 use Laravel\Jetstream\Features;
@@ -13,6 +13,8 @@ use Laravel\Jetstream\Features;
  */
 class UserFactory extends Factory
 {
+    protected $model = User::class;
+
     /**
      * Define the model's default state.
      *

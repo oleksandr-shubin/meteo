@@ -1,5 +1,6 @@
 <?php
 
+use App\Domain\Subscription\Controllers\SubscriptionController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -25,4 +26,6 @@ Route::middleware([
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->name('dashboard');
+
+    Route::resource('subscription', SubscriptionController::class);
 });

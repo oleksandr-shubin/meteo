@@ -3,6 +3,7 @@
 namespace App\Domain\Weatherapi\Support;
 
 use App\Domain\Shared\Dto\WeatherStateDto;
+use Illuminate\Support\Str;
 
 class WeatherapiService
 {
@@ -19,5 +20,16 @@ class WeatherapiService
             $currentWeather['current']['uv'],
             $currentWeather['current']['precip_mm']
         );
+    }
+
+    public function isValidCity(string $cityName): bool
+    {
+        $timeZone = $this->client->getTimeZoneByCity($cityName);
+        $weatherApiCityName = $timeZone['location']['name'] ?? null;
+        if ($weatherApiCityName === null) {
+            return false;
+        }
+
+        return Str::lower($cityName) === Str::lower($weatherApiCityName);
     }
 }

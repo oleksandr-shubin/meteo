@@ -42,4 +42,19 @@ class WeatherapiClient
 
         return $response->json();
     }
+
+    public function getTimeZoneByCity(string $city): array
+    {
+        $endpoint = '/timezone.json';
+        $response = Http::get(self::BASE_URL . $endpoint, [
+            'key' => config('meteo.weatherapi.api_key'),
+            'q' => $city,
+        ]);
+
+        if ($response->status() !== Response::HTTP_OK) {
+            throw new \Exception(sprintf('Weatherapi response %s', $response->status()));
+        }
+
+        return $response->json();
+    }
 }
