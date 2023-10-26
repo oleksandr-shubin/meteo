@@ -2,7 +2,6 @@
 
 namespace App\Domain\Shared\Mail;
 
-use App\Domain\Shared\Dto\WeatherStateDto;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;

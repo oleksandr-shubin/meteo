@@ -23,4 +23,9 @@ class City extends Model
     {
         return $this->hasMany(Subscription::class);
     }
+
+    public function weatherStates(): HasMany
+    {
+        return $this->hasMany(WeatherState::class);
+    }
 }

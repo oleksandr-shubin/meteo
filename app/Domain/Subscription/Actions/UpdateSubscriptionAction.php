@@ -2,7 +2,6 @@
 
 namespace App\Domain\Subscription\Actions;
 
-use App\Domain\Shared\Models\City;
 use App\Domain\Subscription\Models\Subscription;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Carbon;

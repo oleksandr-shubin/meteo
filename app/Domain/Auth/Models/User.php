@@ -5,7 +5,6 @@ namespace App\Domain\Auth\Models;
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use App\Domain\Subscription\Models\Subscription;
 use Database\Factories\UserFactory;
-use Faker\Factory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;

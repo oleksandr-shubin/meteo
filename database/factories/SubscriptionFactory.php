@@ -24,8 +24,8 @@ class SubscriptionFactory extends Factory
         return [
             'user_id' => User::factory(),
             'city_id' => City::factory(),
-            'precipitation_threshold_mm' => $this->faker->numberBetween(0, 500),
-            'uv_threshold' => $this->faker->numberBetween(0, 11),
+            'precipitation_threshold_mm' => $this->faker->numberBetween(1, 500),
+            'uv_threshold' => $this->faker->numberBetween(1, 11),
         ];
     }
 }

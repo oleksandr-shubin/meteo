@@ -2,7 +2,6 @@
 
 namespace App\Domain\Subscription\Requests;
 
-use App\Domain\Shared\Rules\ValidCityRule;
 use Illuminate\Foundation\Http\FormRequest;
 
 class UpdateSubscriptionRequest extends FormRequest

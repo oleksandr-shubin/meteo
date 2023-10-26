@@ -1,28 +1,29 @@
 <?php
 
-namespace App\Domain\Weatherapi\Commands;
+namespace App\Domain\Subscription\Commands;
 
-use App\Domain\Weatherapi\Actions\PollCurrentWeatherAction;
+use App\Domain\Subscription\Actions\ProcessSubscriptionAction;
 use Illuminate\Console\Command;
 
-class PollWeather extends Command
+class ProcessSubscriptionCommand extends Command
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'weatherapi:poll-weather';
+    protected $signature = 'subscription:process';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Weatherapi: poll current weather';
+    protected $description = 'Notify subscribers';
 
     public function __construct(
-        private readonly PollCurrentWeatherAction $pollCurrentWeatherAction,
+        private readonly ProcessSubscriptionAction $processSubscriptionAction
+        ,
     ) {
         parent::__construct();
     }
@@ -34,6 +35,6 @@ class PollWeather extends Command
      */
     public function handle()
     {
-        $this->pollCurrentWeatherAction->execute();
+        $this->processSubscriptionAction->execute();
     }
 }

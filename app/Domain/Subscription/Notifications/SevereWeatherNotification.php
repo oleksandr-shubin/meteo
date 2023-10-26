@@ -1,9 +1,8 @@
 <?php
 
-namespace App\Domain\Shared\Notifications;
+namespace App\Domain\Subscription\Notifications;
 
 use App\Domain\Shared\Dto\WeatherParameterDto;
-use App\Domain\Shared\Dto\WeatherStateDto;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
@@ -12,7 +11,7 @@ use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
 use NotificationChannels\Telegram\TelegramMessage;
 
-class SevereWeatherDetected extends Notification implements ShouldQueue
+class SevereWeatherNotification extends Notification implements ShouldQueue
 {
     use Queueable;
 
