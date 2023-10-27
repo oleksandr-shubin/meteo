@@ -7,6 +7,7 @@ use App\Domain\Subscription\Models\Subscription;
 use Database\Factories\UserFactory;
 use Faker\Factory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -71,5 +72,10 @@ class User extends Authenticatable
     public function subscriptions(): HasMany
     {
         return $this->hasMany(Subscription::class);
+    }
+
+    public function owns(Model $model): bool
+    {
+        return $this->id === $model->user_id;
     }
 }

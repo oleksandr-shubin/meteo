@@ -58,6 +58,7 @@ class SubscriptionController extends Controller
      */
     public function edit(Subscription $subscription)
     {
+        $this->authorize('update', $subscription);
         return view('subscription.edit', compact('subscription'));
     }
 
@@ -66,6 +67,7 @@ class SubscriptionController extends Controller
      */
     public function update(UpdateSubscriptionRequest $request, Subscription $subscription)
     {
+        $this->authorize('update', $subscription);
         $this->updateSubscriptionAction->execute($subscription, $request->toArray());
 
         $request->session()->flash('success', 'Subscription was successfully updated!');
@@ -77,6 +79,7 @@ class SubscriptionController extends Controller
      */
     public function destroy(Subscription $subscription)
     {
+        $this->authorize('delete', $subscription);
         $subscription->delete();
 
         request()->session()->flash('success', 'Subscription was successfully deleted!');
