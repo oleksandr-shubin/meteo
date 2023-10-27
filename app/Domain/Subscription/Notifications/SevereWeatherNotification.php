@@ -3,6 +3,7 @@
 namespace App\Domain\Subscription\Notifications;
 
 use App\Domain\Shared\Dto\WeatherParameterDto;
+use App\Domain\Shared\Models\City;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
@@ -19,6 +20,7 @@ class SevereWeatherNotification extends Notification implements ShouldQueue
      * Create a new notification instance.
      */
     public function __construct(
+        private readonly City $city,
         private readonly Collection $triggeredParameters
     ) {
     }
@@ -40,6 +42,7 @@ class SevereWeatherNotification extends Notification implements ShouldQueue
     {
         $message = new MailMessage();
         $message->line('Hello there!');
+        $message->line('City: ' . $this->city->name);
 
         $this->triggeredParameters->reduce(
             fn ($message, WeatherParameterDto $parameter) => $message->line(
@@ -58,6 +61,7 @@ class SevereWeatherNotification extends Notification implements ShouldQueue
     {
         $message = TelegramMessage::create()->to($notifiable->telegram_chat_id);
         $message->content("Hello there!\n");
+        $message->line('City: ' . $this->city->name);
 
         $this->triggeredParameters->reduce(
             fn ($message, WeatherParameterDto $parameter) => $message->line(

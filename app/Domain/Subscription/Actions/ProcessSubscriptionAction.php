@@ -25,9 +25,9 @@ class ProcessSubscriptionAction
                 $cities->each(function(City $city) {
                     $averageWeather = $this->averageWeatherService->findAverage($city);
                     $city->subscriptions()->triggered($averageWeather)->with('user')
-                        ->each(function (Subscription $subscription) use($averageWeather) {
+                        ->each(function (Subscription $subscription) use ($averageWeather, $city) {
                             $triggeredParameters = $this->findTriggeredParameters($averageWeather, $subscription);
-                            $notification = new SevereWeatherNotification($triggeredParameters);
+                            $notification = new SevereWeatherNotification($city, $triggeredParameters);
                             $subscription->user->notify($notification);
                         });
                 });

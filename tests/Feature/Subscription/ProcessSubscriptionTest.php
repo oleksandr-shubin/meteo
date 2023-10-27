@@ -54,7 +54,6 @@ class ProcessSubscriptionTest extends TestCase
 
     /**
      * @test
-     * @group failing
      */
     public function it_can_process_triggered_subscriptions(): void
     {
@@ -132,6 +131,8 @@ class ProcessSubscriptionTest extends TestCase
                     $method = Str::of($channel)->ucfirst()->prepend('to')->__toString();
                     $content = $notification->$method(new \StdClass());
                     return collect($content->introLines)
+                            ->contains(fn ($line) => Str::of($line)->contains('City'))
+                        && collect($content->introLines)
                             ->contains(fn ($line) => Str::of($line)->contains('Precipitations'))
                         && collect($content->introLines)
                             ->doesntContain(fn ($line) => Str::of($line)->contains('UV index'));
