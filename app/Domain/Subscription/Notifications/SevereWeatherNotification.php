@@ -56,7 +56,7 @@ class SevereWeatherNotification extends Notification implements ShouldQueue
 
     public function toTelegram(object $notifiable)
     {
-        $message = TelegramMessage::create();
+        $message = TelegramMessage::create()->to($notifiable->telegram_chat_id);
         $message->content("Hello there!\n");
 
         $this->triggeredParameters->reduce(

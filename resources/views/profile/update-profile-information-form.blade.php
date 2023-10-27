@@ -81,6 +81,12 @@
                 @endif
             @endif
         </div>
+
+        <div class="col-span-6 sm:col-span-4">
+            <x-label for="telegram_chat_id" value="{{ __('Telegram chat id') }}" />
+            <x-input id="telegram_chat_id" type="text" class="mt-1 block w-full" wire:model="state.telegram_chat_id" autocomplete="telegram_chat_id" />
+            <x-input-error for="telegram_chat_id" class="mt-2" />
+        </div>
     </x-slot>
 
     <x-slot name="actions">
